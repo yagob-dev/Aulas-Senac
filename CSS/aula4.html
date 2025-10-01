@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            text-shadow: 2px 2px 4px black;
+            color: green;
+            width: 200px;
+            padding: 200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPixiLk-QdD_KtqL3fSyup41NXsqAMUuLYcBZW7LO0rDA2y7xWaBKkJ597otYZWkoMaPzgGgcxdFjfM_ZfCXtgBTvYL_mFyQfFFtqi0iH9PI_trP6rDcWsEw8GePlBWwvwBg0X85Wpq1M/s1600/3303618-7304635142-illid.jpg");
+
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            
+        }
+        button {
+            background-color: blue;
+            color: white;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:hover {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <card class="card">Teste card</card>
+    <button class="botao">Enviar</button>
+</body>
+</html>

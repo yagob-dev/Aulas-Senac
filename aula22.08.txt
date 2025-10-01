@@ -1,0 +1,50 @@
+ul>li*3 >> expande uma lista
+
+h1+p >> elementos no mesmo nível
+
+select>option*5 >> repete o elemento
+
+select>option>{}
+
+#= ID .= classe
+
+[] >> atributos ex:href,alt,src...
+
+tabela com cabeçalho
+table>tr>th*3^tr*3>td*3
+
+UTF-8 >> aceita açentos na página
+
+h1: título principal
+h2: subtítulo
+p: parágrafo
+strong: negrito
+em: ênfase itálico
+links e imagens >> <a href=... target="_blank">Link externo</a> // <img scr=... alt=... widht=...
+listas:
+não ordenadas:
+<ul>
+<li></li>
+</ul>
+ordenadas:
+<ol>
+<li></li>
+</ol>
+tabelas:
+<tr>
+<th></th>
+</tr>
+formulários:
+<form action="8" method="post">
+<input type=
+<button>
+tags semânticas:
+<head>topo da página
+<nav>menu de navegação
+<main>conteúdo principal
+<section>seção de conteúdo
+<article>artigo independente
+<aside>contéudo lateral
+<footer>rodapé
+
+alt+shift+F: indentação

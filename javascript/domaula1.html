@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Exemplo DOM</title>
+</head>
+
+<body>
+    <h1 id="titulo">Olá Mundo!</h1>
+    <p class="texto">Este é um parágrafo.</p>
+    <ul>
+        <p id="paragrafo"></p>
+        <!-- <h2>Minha Lista</h2>
+        <li>Maçã</li>
+        <li>Laranja</li>
+        <li>Morango</li> -->
+    </ul>
+    <input type="text" id="meuinput" placeholder="Escreva aqui">
+    <button id="meubotao">Clique aqui!</button>
+    <script>
+        // function mudar() {
+        //     document.getElementById("titulo")
+        //     titulo.textContent = "Bem-vindo ao DOM!";
+        // }
+        // let itens = document.querySelectorAll("ul li");
+
+        // for (let i = 0; i < itens.length; i++) {
+        //     itens[i].textContent += " ✔️";
+        // };
+        let input = document.getElementById("meuinput");
+        let botao = document.getElementById("meubotao");
+        let paragrafo = document.getElementById("paragrafo");
+
+        botao.onclick = function() {
+            paragrafo.textContent = input.value;
+        };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+P {
+    color:red;
+}
+#destaque {
+    color: blue;
+}
+.formata {
+    color: green;
+}
+.estilo2 {
+    color:orange;
+}
+.estilo1 {
+    color: aquamarine;
+}
+
+[type="text"] { border: 1px solid blue;}
+[href^="https"] { color: blueviolet;}

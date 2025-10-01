@@ -1,0 +1,63 @@
+body {
+background-clor: lightblue
+}
+body {
+background-color: url;
+}
+body {
+background-color: no-repeat;
+body {
+background-size: cover;
+}
+body {
+background-position: center top;
+}
+body {
+background-attachment: fixed;
+}
+
+bordas e cantos
+.box {
+border: 2px solid black;
+border-radius: 15px;
+}
+.circle {
+width: 100px
+height: 100px
+background-color: orange
+border-radius: 50%
+.card {
+box-shadow: 2px 2px 8px black
+}
+h1 {
+text-shadow: 2px 2px 4px red;
+}
+
+Gradientes
+header {
+background: linear-gradient(to right, red, yellow)
+section {
+background: radial-gradient(circle, blue, write)
+}
+div {
+background: conic-gradient()
+}
+
+Opacidade e RGBA
+img {
+opacity: 0.7;
+}
+div {
+background-color: rgba
+}
+
+Transições
+button {
+background-color:
+color:
+transition: background-color 0.5, transform;
+}
+button:hover {
+color: green;
+}
+

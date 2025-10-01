@@ -1,0 +1,81 @@
+Arrays:
+
+let frutas = ["maçã","banana","uva"];
+console.log(frutas[0]);
+console.log(frutas[2]);
+*******************************************************************
+
+let frutas = ["pão", "ovo"];
+frutas.push("manteiga"); 
+console.log(frutas);
+*******************************************************************
+
+let frutas = ["kiwi", "tangerina"]
+frutas.unshift("morango"); 
+console.log(frutas);
+*******************************************************************
+
+let frutas = ["maçã", "banana"];
+let palavra = "palavra"
+frutas.push("laranja", "pera", "acerola");
+console.log(frutas); 
+frutas.unshift("uva");
+console.log(frutas); 
+frutas.shift();
+console.log(frutas); 
+frutas.pop();
+console.log(frutas);
+console.log(frutas.length)
+console.log(palavra.length)
+*******************************************************************
+
+let tarefas = [];
+
+tarefas.push("Estudar JavaScript");
+tarefas.push("Praticar exercícios");
+tarefas.push("Beber água");
+console.log(tarefas)
+console.log("Minhas Tarefas:");
+for (let i = 0; i < tarefas.length; i++) {
+  console.log("- " + tarefas[i]); >>>>>> ou (i+1 + " - " + tarefa);
+}
+*******************************************************************
+
+let tarefas = [];
+
+tarefas.push("Limpar a casa", "Ir ao mercado");
+tarefas.push("Comprar água");
+tarefas.push("Ir ao banco");
+
+for(let i = 0; i < tarefas.length; i++) {
+    console.log(`Item ${i+1}: ${tarefas[i]}`)
+}
+
+let removido = tarefas.splice(2,1);
+
+console.log(removido)
+*******************************************************************
+
+let carro = {
+    ano: 2020,
+    marca: "fiat",
+    tipo: "uno",
+    cor: "branco",
+    combustivel: "flex"
+}
+
+console.log(`O meu carro é um ${carro.tipo}, ${carro.cor}, ano ${carro.ano} da marca ${carro.marca}`)
+*******************************************************************
+
+let produtos = [
+  { nome: "Celular", preco: 2399, estoque: "15" },
+  { nome: "Memória RAM", preco: 549, estoque: "100" },
+  { nome: "Teclado", preco: 780, estoque: "80" }
+];
+
+for(let i =0; i <produtos.length; i++) {
+    console.log(produtos[i].nome + ": " + produtos[i].preco)
+}
+
+
+

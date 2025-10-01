@@ -1,0 +1,51 @@
+transition-property: color, background, transform
+transition-duration: 2s, 500ms
+transition-timing-function: linear, ease, ease-in, ease-out, ease-in-out
+transition-delay >> atraso antes da transição começar
+transition: background-color 0.5s ease
+img {
+width: 200px;
+transition: transform 1s ease-in-out, opacity 0.5
+}
+img:hover {
+transform: scale(1.2) rotate(10deg);
+opacity: 0.8;
+}
+<img src="url..." alt="...">
+
+@keyframes nomeanimação {
+from { propriedade: valorinicial; }
+to { propriedade: valorfinal; }
+}
+@keyframes girar (
+0% { transform: rotate(0deg): }
+
+animation-name
+animation-duration
+animation-iteration-count
+animation-delay
+animation-direction
+animation-fil-mode
+.box {
+width 100px;
+heigth 100px;
+backgrounded: green;
+animation: mover 4s infinite alternate;
+}
+@keyframes mover {
+            0% {
+            transform: translate(0, 0);
+            background-color: green;
+         }
+            50% {
+            transform: translate(200px, 100px);
+            background-color: blue;
+         }
+            100% {
+            transform: translate(0, 0);
+            background-color: red;
+         }
+transform: scale(1.5);
+transform: rotate(45deg);
+transform: translate(50px, 20px);
+transform: skew(20deg, 10deg);

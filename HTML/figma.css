@@ -1,0 +1,129 @@
+/* Reset e estilos globais */
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* Seção principal */
+.main-container {
+    background-color: #7558FB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+.content-section {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    padding-top: 15px;
+}
+/* Navegação */
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    gap: 15px;
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    width: 160px;
+    height: 40px;
+    border-radius: 15px;
+    color: #7558FB;
+}
+/* Título principal */
+.main-title {
+    color: #D3CBFE;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 174px;
+    font-size: 40px;
+    margin-top: 40px;
+    margin-bottom: 10%;
+}
+/* Botão Principal*/
+.main-button {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    margin-bottom: 7%;
+    border-radius: 15px;
+    color: #7558FB;
+}
+/* Layout da seção princippal */
+.section-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.section-img {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.hero-image {
+    background-color: #7558FB;
+    width: 80%;
+    height: 90%;
+    overflow: hidden;
+}
+/* Grade de artigos */
+.articles-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+    height: 100%;
+    gap: 10%;
+    padding-bottom: 5%;
+}
+.article-card {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin-top: 5%;
+}
+.article-image {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+.article-description {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    padding-left: 0;
+    color: #7558FB;
+}

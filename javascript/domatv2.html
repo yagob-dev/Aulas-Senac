@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="item-input" placeholder="Digite o novo item">
+    <ul id="lista"></ul>
+    <button onclick="adicionarItem()">Adicionar Item</button>
+    <button onclick="removerItem()">Remover Último</button>
+    <script>
+        function adicionarItem() {
+            let lista = document.getElementById("lista");
+            let input = document.getElementById("item-input");
+            let novoTexto = input.value;
+            if (novoTexto.trim() !=="") {
+                let novoItem = document.createElement("li");
+                novoItem.innerText = novoTexto;
+                lista.appendChild(novoItem);
+                input.value = "";
+            }
+        }
+
+        function removerItem() {
+            let lista = document.getElementById("lista");
+            if (lista.lastChild) {
+                lista.removeChild(lista.lastChild);
+            }
+        }
+    </script>
+</body>
+
+</html>

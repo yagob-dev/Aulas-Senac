@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: blue;
+            color: white;
+            transition: background-color 0.5s ease-out;
+
+        }
+        button:hover {
+            background-color: red;
+        }
+        img {
+            width: 10%;
+            transition: transform 1s ease-in-out, opacity 0.5s;
+            align-self: center;
+        }
+        img:hover {
+            transform: scale(2.0) rotate(30deg);
+            opacity: 0.2;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background: green;
+            animation: mover 4s infinite alternate;
+        }
+        @keyframes mover {
+            0% {
+            transform: translate(0, 0);
+            background-color: green;
+         }
+            50% {
+            transform: translate(800px);
+            background-color: blue;
+         }
+            100% {
+            transform: translate(0, 0);
+            background-color: red;
+         }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/3194/9f4b48f1e24380a6c549f06437c208aa.jpg" alt="">
+    </div>
+    <div class="box"></div>
+   <button type="button">Clique</button>
+</body>
+</html>

@@ -1,0 +1,80 @@
+// Módulo para ler entrada do usuário no console
+const readline = require("readline");
+
+// Criando interface para leitura e escrita no console
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+// Array vazio de tarefas
+let tarefas = [];
+
+// Função principal do menu
+function mostrarMenu() {
+    console.log("\n=== Lista de Tarefas ===");
+    console.log("1. Adicionar nova tarefa");
+    console.log("2. Mostrar tarefas");
+    console.log("3. Remover tarefa");
+    console.log("4. Sair");
+    rl.question("Escolha uma opção: ", function(opcao) {
+        switch(opcao) {
+            case "1":
+                adicionarTarefa();
+                break;
+            case "2":
+                mostrarTarefas();
+                break;
+            case "3":
+                removerTarefa();
+                break;
+            case "4":
+                console.log("Encerrando o programa.");
+                rl.close();
+                break;
+            default:
+                console.log("Opção inválida. Tente novamente.");
+                mostrarMenu();
+        }
+    });
+}
+
+// Função para adicionar tarefa
+function adicionarTarefa() {
+    rl.question("Digite a nova tarefa: ", function(tarefa) {
+        tarefas.push(tarefa);
+        console.log(`Tarefa adicionada: "${tarefa}"`);
+        mostrarMenu();
+    });
+}
+
+// Função para mostrar tarefas
+function mostrarTarefas() {
+    if (tarefas.length === 0) {
+        console.log("Nenhuma tarefa na lista.");
+    } else {
+        console.log("\nTarefas:");
+        tarefas.forEach((tarefa, index) => {
+            console.log(`${index + 1}. ${tarefa}`);
+        });
+    }
+    mostrarMenu();
+}
+
+// Função para remover tarefa
+function removerTarefa() {
+    mostrarTarefas();
+    rl.question("Digite o número da tarefa que deseja remover: ", function(numero) {
+        let indice = parseInt(numero) - 1;
+        if (indice >= 0 && indice < tarefas.length) {
+            let removida = tarefas.splice(indice, 1);
+            console.log(`Tarefa removida: "${removida[0]}"`);
+        } else {
+            console.log("Número inválido.");
+        }
+        mostrarMenu();
+    });
+}
+
+// Inicia o programa
+mostrarMenu();

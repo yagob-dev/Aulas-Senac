@@ -1,0 +1,66 @@
+p {
+font-family: familia da fonte arial, helvetica, sans-serif;
+font-size: tamanho 
+font-wight: peso da fonte
+}
+
+estilo
+h1 {
+font-style: normal ou italic
+text-transform: maiusculo ou minusculo
+text-decoration: underline, line-trough, none
+}
+
+espaçamento
+p {
+line-height: 1.5 altura da linha
+letter-spacing: px espaço entre letras
+word-spacing: px espaço entre palavras
+}
+
+alinhamento
+text-align: 
+vertical-align: 
+
+google fonts
+<link href="link" rel="stylesheet">
+
+box model
+content: textou ou imagem
+padding: espaço entre conteudo e borda interna
+border: a linha que envolve o conteudo e o padding
+mrgin: espaço externo entre elementos vizinhos
+width
+padding
+border
+margin
+box-sizing
+
+display
+block: ocupa toda a largura disponivel
+inline: ocupa o espaço 
+inline-block: 
+none: 
+
+float e clear
+float: faz o elemento flutuar a esquerda ou direita
+clear: evita que os outros elementos se alinhem ao lado
+
+flexbox
+display:flex: ativa o modo flexivel
+flex-direction: define a direção
+justify-content: alinha os itens ao eixo principal
+align-content: alinha no eixo cruzado
+gap: define os espaços entre os itens
+
+propriedades
+flex-grow
+
+<a hrer="#">
+.cards {
+flex-direction
+}
+< nav class="menu">
+</nav>
+@media (max-width:300px) {
+.cards {

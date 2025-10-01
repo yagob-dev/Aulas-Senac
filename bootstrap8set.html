@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Início</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>
+      <p class="lead">Texto em destaque</p>
+      <h1 class="display-3 text-danger">Título Grande</h1>
+      <p class="text-muted">Texto secundário</p>
+      <img
+        src="https://i.redd.it/ft4zhmnlsywy.png"
+        class="rounded mx-auto d-block"
+        width="100px"
+      />
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-info">
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ana</td>
+              <td>ana@edu.senac.pa.br</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Bruno</td>
+              <td>bruno@edu.senac.pa.br</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <form>
+        <div class="container">
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite seu nome"
+          />
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="nome@email.com"
+          />
+          <label for="email">E-mail</label>
+        </div>
+        <button class="btn btn-success">Enviar</button>
+        </div>
+      </form>
+      <div class="container d-grid gap-2">
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-secondary">Secondary</button>
+      <button type="button" class="btn btn-outline-success">Success</button>
+      <button type="button" class="btn btn-outline-danger">Danger</button>
+      <button type="button" class="btn btn-outline-warning">Warning</button>
+      <button type="button" class="btn btn-outline-info">Info</button>
+      <button type="button" class="btn btn-outline-dark">Dark</button>
+      <button type="button" class="btn btn-link">Link</button>
+      </div>
+      <div class="alert alert-warning container">Atenção! Isso é um alerta.</div>
+      <div class="card container" style="width: 20rem;">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/045/084/294/small/cartoon-comic-book-crash-symbol-png.png" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Card Exemplo</h5>
+          <p class="card-text">Texto dentro do card.</p>
+          <a href="#" class="btn btn-primary">Ação</a>
+        </div>
+      </div>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal">
+        Abrir Modal
+      </button>
+      
+      <div class="modal fade" id="meuModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Exemplo de Modal</h5>
+              <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">Conteúdo do modal aqui.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="2"></button>
+        </div>
+      
+        <!-- Slides -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://criticalhits.com.br/wp-content/uploads/2022/10/light-yagami.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Primeiro Slide</h5>
+              <p>Legenda da primeira imagem.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2025/02/untitled-design-1.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+      
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#meuCarrossel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#meuCarrossel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+Tabuada js
+let num = prompt("Digite um número:");
+num = Number(num);
+
+for (let i = 1; i <= 10; i++) {
+  const resultado = num*i;
+  console.log(`${num} x ${i} = ${resultado}`);
+}
+
+Contagem regressiva
+let contador = 10;
+
+while (contador >= 1) {
+  console.log("Contagem: " + contador);
+  contador--;
+}
+
+tabuada 2
+let numero = 5;
+
+for (let i = 1; i <= 10; i++ ) {
+console.log(numero + " x " + i + " = " + numero*i)
+}
+
+contagem 2
+let numero = 10
+while (numero > 0) {
+    console.log(numero)
+    numero -=1
+}
+
+
+contagem par >>>
+for (let i = 1; i <= 20; i++) {
+if (i%2 !==0) {
+  continue
+}
+console.log(i)
+}
+
+contagem ímpar >>>
+let num = 1;
+while (num <= 50) {
+    if (num % 2 !==0) {
+        console.log(num)
+    }
+    num++
+}
+
+número secreto >>>
+let numeroSecreto = 7;
+let tentativa;
+do {
+    tentativa = prompt("Digite um número: ");
+    if (tentativa == numeroSecreto) {
+        console.log("Parabéns, acertou!")
+        break;
+    } else {
+        console.log("Você errou!")
+    }
+} while (tentativa !== numeroSecreto){
+}
+
+múltiplo de 5
+let soma = 0;
+
+for (let i=1; i<=100; i++) {
+    if (i % 5 === 0) {
+        continue
+    }
+    soma++;
+    console.log(i)
+}
+
+calculadora >>>
+function somar(a, b) {
+    return a + b;
+}
+let resultado1 = somar(5, 3);
+  console.log("Resultado: " + resultado1);
+  
+  
+function subtrair(a, b) {
+    return a - b;
+}
+let resultado2 = subtrair(7, 3);
+  console.log("Resultado: " + resultado2);
+  
+  
+function multiplicar(a, b) {
+    return a * b;
+}
+let resultado3 = multiplicar(5, 7);
+  console.log("Resultado: " + resultado3);
+  
+function dividir(a, b) {
+    return a / b;
+}
+let resultado4 = dividir(20, 2);
+  console.log("Resultado: " + resultado4);
+
+calculadora 2 >>>
+function calculadora(n1, n2 ,op) {
+    if (op == "soma") {
+         return n1 + n2;
+    } else if (op == "subtração") {
+        return n1 - n2;
+    } else if (op == "divisão") {
+        return n1 / n2;
+    } else {
+        return n1 * n2;
+        } 
+    }
+
+console.log (calculadora(15,5,"divisão"))
+
+inverter >>>
+function inverter(palavra) {
+    let dividir = palavra.split('');
+    let inverter = dividir.reverse();
+    let unir = inverter.join('');
+    return unir;
+}
+console.log(inverter("javascript"));

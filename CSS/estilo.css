@@ -1,0 +1,17 @@
+h1, h2 {
+    color: green;
+}
+p {
+    font-size: 18px;
+}
+ul {
+    border: solid 1px red;
+    padding: 10px;
+}
+body {
+    background-color: black;
+    color: white;
+}
+* {
+    margin: 5px;
+}

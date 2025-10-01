@@ -1,0 +1,22 @@
+action: define para onde os dados serão enviados
+method: define como os dados serão enviados
+get: dados URL
+post: ocultos
+input: campos de texto
+textarea: área de texto multilinha
+botões: >> input type=submit value=enviar
+botão com tag: button
+seletores:
+<select>
+option >> opção >> <option value=opt1>Opção1</option>
+</select>
+caixa de seleção:
+checkbox >> <input type="checkbox" name="checkbox"> << seleção com varias escolhas
+<input type="radio" name="aniversario"> <<< seleção com esolha
+
+Atributos Globais: aulas passadas
+id: elemento único
+class: agrupa elementos para estilização >> negrito no css
+title: exibe uma dica ao passar o mouse
+style: aplica estilo direto no elemento (não recomendado em excessão
+<div style="color"></div>
