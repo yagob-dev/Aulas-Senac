@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento de Serviços</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        #signature-pad {
+            touch-action: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Container Principal do App -->
+    <div id="app-container" class="w-full max-w-7xl bg-white rounded-xl shadow-2xl overflow-hidden">
+
+        <!-- Header para alternar telas -->
+        <div class="p-6 bg-blue-600 text-white flex justify-center space-x-4 flex-wrap">
+            <button id="btn-cliente" class="px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:bg-white hover:text-blue-600">Cliente</button>
+            <button id="btn-atendente" class="px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:bg-white hover:text-blue-600">Atendente</button>
+            <button id="btn-chefe" class="px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:bg-white hover:text-blue-600">Chefe</button>
+            <button id="btn-fornecedores" class="px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:bg-white hover:text-blue-600">Fornecedores</button>
+            <button id="btn-assinatura" class="px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:bg-white hover:text-blue-600">Assinatura</button>
+            <button id="btn-ia-diagnostico" class="px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:bg-white hover:text-blue-600">Diagnóstico IA</button>
+        </div>
+
+        <!-- Tela do Cliente -->
+        <div id="tela-cliente" class="p-8 hidden">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Solicitar um Serviço</h2>
+            <form id="form-cliente" class="space-y-4">
+                <div>
+                    <label for="cliente-nome" class="block text-gray-700 font-medium mb-1">Seu Nome</label>
+                    <input type="text" id="cliente-nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Digite seu nome completo" required>
+                </div>
+                <div>
+                    <label for="cliente-telefone" class="block text-gray-700 font-medium mb-1">Telefone</label>
+                    <input type="tel" id="cliente-telefone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(xx) xxxxx-xxxx" required>
+                </div>
+                <div>
+                    <label for="cliente-descricao" class="block text-gray-700 font-medium mb-1">Descrição do Problema</label>
+                    <textarea id="cliente-descricao" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Descreva o problema do seu equipamento" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300">Enviar Solicitação</button>
+            </form>
+            <div id="confirmacao-cliente" class="mt-6 text-center text-green-600 font-semibold hidden">
+                <p>Obrigado! Sua solicitação foi enviada com sucesso. Em breve, um atendente entrará em contato.</p>
+            </div>
+        </div>
+
+        <!-- Tela do Atendente -->
+        <div id="tela-atendente" class="p-8 hidden">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Painel do Atendente</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Seção de Cadastro de OS -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Cadastrar Nova OS</h3>
+                    <form id="form-os" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-1">Nome do Cliente</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-1">Descrição do Serviço</label>
+                            <textarea rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300">Registrar OS</button>
+                    </form>
+                    <div id="confirmacao-os" class="mt-4 text-center text-green-600 font-semibold hidden">
+                        <p>Ordem de Serviço registrada com sucesso!</p>
+                    </div>
+                </div>
+
+                <!-- Seção de Peças -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Gerenciar Peças</h3>
+                    <div class="space-y-4">
+                        <!-- Busca de Peças -->
+                        <div>
+                            <label for="peca-busca" class="block text-gray-700 font-medium mb-1">Buscar Peça</label>
+                            <div class="flex space-x-2">
+                                <input type="text" id="peca-busca" class="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nome ou código da peça">
+                                <button class="bg-gray-300 text-gray-800 px-4 rounded-md hover:bg-gray-400 transition-colors duration-300">Buscar</button>
+                            </div>
+                            <ul id="lista-pecas" class="mt-2 text-gray-600 space-y-1"></ul>
+                        </div>
+                        <!-- Cadastro de Peças -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Cadastrar Nova Peça</h4>
+                            <form id="form-peca" class="space-y-2">
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md" placeholder="Nome da peça" required>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md" placeholder="Código" required>
+                                <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-md" placeholder="Quantidade" required>
+                                <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600">Cadastrar</button>
+                            </form>
+                            <div id="confirmacao-peca" class="mt-2 text-center text-green-600 font-semibold hidden">
+                                <p>Peça cadastrada!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela do Chefe -->
+        <div id="tela-chefe" class="p-8 hidden">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Painel do Chefe</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Métrica 1: OS Pendentes -->
+                <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center">
+                    <p class="text-5xl font-bold text-blue-600" id="os-pendentes">0</p>
+                    <p class="text-gray-600 font-medium mt-2">OS Pendentes</p>
+                </div>
+                <!-- Métrica 2: OS Finalizadas -->
+                <div class="bg-green-50 p-6 rounded-xl shadow-md text-center">
+                    <p class="text-5xl font-bold text-green-600" id="os-finalizadas">0</p>
+                    <p class="text-gray-600 font-medium mt-2">OS Finalizadas</p>
+                </div>
+                <!-- Métrica 3: Total de OS -->
+                <div class="bg-yellow-50 p-6 rounded-xl shadow-md text-center">
+                    <p class="text-5xl font-bold text-yellow-600" id="os-total">0</p>
+                    <p class="text-gray-600 font-medium mt-2">Total de OS</p>
+                </div>
+            </div>
+           
+            <!-- Gráfico de Status (simulado) -->
+            <div class="mt-8 bg-gray-50 p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-gray-700 mb-4">Status dos Serviços</h3>
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <span>Em Andamento</span>
+                    <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                    <span>Pendente</span>
+                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <span>Finalizado</span>
+                </div>
+                <div class="h-64 bg-gray-200 rounded-lg flex items-end">
+                    <!-- Barras do gráfico (simuladas) -->
+                    <div id="chart-bar-pendentes" class="bg-yellow-500 rounded-b-lg w-1/3 transition-all duration-500 ease-out h-0" style="height: 0;"></div>
+                    <div id="chart-bar-andamento" class="bg-blue-500 rounded-b-lg w-1/3 transition-all duration-500 ease-out h-0" style="height: 0;"></div>
+                    <div id="chart-bar-finalizadas" class="bg-green-500 rounded-b-lg w-1/3 transition-all duration-500 ease-out h-0" style="height: 0;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Fornecedores -->
+        <div id="tela-fornecedores" class="p-8 hidden">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Gerenciar Fornecedores</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Seção de Cadastro de Fornecedor -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Cadastrar Novo Fornecedor</h3>
+                    <form id="form-fornecedor" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-1">Nome do Fornecedor</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-1">Contato</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Telefone ou e-mail" required>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300">Registrar Fornecedor</button>
+                    </form>
+                    <div id="confirmacao-fornecedor" class="mt-4 text-center text-green-600 font-semibold hidden">
+                        <p>Fornecedor registrado com sucesso!</p>
+                    </div>
+                </div>
+
+                <!-- Seção de Lista de Fornecedores -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Fornecedores Cadastrados</h3>
+                    <ul class="space-y-2 text-gray-700" id="lista-fornecedores">
+                        <!-- Itens simulados para demonstração -->
+                        <li class="p-2 bg-white rounded-md shadow-sm">Eletrônica Brasil S.A. <span class="text-sm text-gray-500">(+55 11 98765-4321)</span></li>
+                        <li class="p-2 bg-white rounded-md shadow-sm">Tecnologia Global Ltda. <span class="text-sm text-gray-500">(contato@tecglobal.com)</span></li>
+                        <li class="p-2 bg-white rounded-md shadow-sm">Componentes Express <span class="text-sm text-gray-500">(+55 21 55555-5555)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nova Tela: Assinatura -->
+        <div id="tela-assinatura" class="p-8 hidden">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Assinatura Digital</h2>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+                <p class="text-gray-700 mb-4 text-center">Use o mouse ou o toque para assinar na área abaixo:</p>
+                <div class="border border-gray-300 bg-white rounded-lg overflow-hidden relative">
+                    <canvas id="signature-pad" class="w-full h-80 cursor-crosshair"></canvas>
+                </div>
+                <div class="flex justify-center space-x-4 mt-6">
+                    <button id="clear-btn" class="bg-gray-300 text-gray-800 font-semibold py-2 px-6 rounded-md hover:bg-gray-400 transition-colors duration-300">Limpar</button>
+                    <button id="save-btn" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300">Salvar</button>
+                </div>
+            </div>
+            <div id="confirmacao-assinatura" class="mt-6 text-center text-green-600 font-semibold hidden">
+                <p>Assinatura salva com sucesso!</p>
+            </div>
+        </div>
+
+        <!-- Nova Tela: Diagnóstico IA -->
+        <div id="tela-ia-diagnostico" class="p-8 hidden">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Diagnóstico com IA</h2>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md space-y-4">
+                <p class="text-gray-700 mb-4 text-center">Descreva o problema para obter possíveis diagnósticos e soluções.</p>
+                <div>
+                    <label for="ia-equipamento" class="block text-gray-700 font-medium mb-1">Equipamento</label>
+                    <input type="text" id="ia-equipamento" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Notebook Dell XPS 15">
+                </div>
+                <div>
+                    <label for="ia-problema" class="block text-gray-700 font-medium mb-1">Descrição do Problema</label>
+                    <textarea id="ia-problema" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: A tela fica preta ao ligar o aparelho..."></textarea>
+                </div>
+                <button id="ia-analisar-btn" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300">Analisar</button>
+
+                <div id="ia-resultados" class="hidden mt-6">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">Diagnósticos Anteriores Relacionados</h3>
+                        <ul id="ia-diagnosticos-anteriores" class="space-y-2 text-gray-600"></ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">Soluções Sugeridas pela IA</h3>
+                        <ul id="ia-solucoes-sugeridas" class="space-y-2 text-gray-600 list-disc list-inside"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const btnCliente = document.getElementById('btn-cliente');
+        const btnAtendente = document.getElementById('btn-atendente');
+        const btnChefe = document.getElementById('btn-chefe');
+        const btnFornecedores = document.getElementById('btn-fornecedores');
+        const btnAssinatura = document.getElementById('btn-assinatura');
+        const btnIaDiagnostico = document.getElementById('btn-ia-diagnostico');
+       
+        const telaCliente = document.getElementById('tela-cliente');
+        const telaAtendente = document.getElementById('tela-atendente');
+        const telaChefe = document.getElementById('tela-chefe');
+        const telaFornecedores = document.getElementById('tela-fornecedores');
+        const telaAssinatura = document.getElementById('tela-assinatura');
+        const telaIaDiagnostico = document.getElementById('tela-ia-diagnostico');
+
+        const formCliente = document.getElementById('form-cliente');
+        const confirmacaoCliente = document.getElementById('confirmacao-cliente');
+       
+        const formOS = document.getElementById('form-os');
+        const confirmacaoOS = document.getElementById('confirmacao-os');
+        const formPeca = document.getElementById('form-peca');
+        const confirmacaoPeca = document.getElementById('confirmacao-peca');
+        const pecaBusca = document.getElementById('peca-busca');
+        const listaPecas = document.getElementById('lista-pecas');
+       
+        const osPendentesDisplay = document.getElementById('os-pendentes');
+        const osFinalizadasDisplay = document.getElementById('os-finalizadas');
+        const osTotalDisplay = document.getElementById('os-total');
+        const chartBarPendentes = document.getElementById('chart-bar-pendentes');
+        const chartBarAndamento = document.getElementById('chart-bar-andamento');
+        const chartBarFinalizadas = document.getElementById('chart-bar-finalizadas');
+
+        const formFornecedor = document.getElementById('form-fornecedor');
+        const confirmacaoFornecedor = document.getElementById('confirmacao-fornecedor');
+        const listaFornecedores = document.getElementById('lista-fornecedores');
+       
+        const signatureCanvas = document.getElementById('signature-pad');
+        const signatureCtx = signatureCanvas.getContext('2d');
+        const clearBtn = document.getElementById('clear-btn');
+        const saveBtn = document.getElementById('save-btn');
+        const confirmacaoAssinatura = document.getElementById('confirmacao-assinatura');
+
+        const iaAnalisarBtn = document.getElementById('ia-analisar-btn');
+        const iaResultados = document.getElementById('ia-resultados');
+        const iaDiagnosticosAnteriores = document.getElementById('ia-diagnosticos-anteriores');
+        const iaSolucoesSugeridas = document.getElementById('ia-solucoes-sugeridas');
+
+
+        // Configuração inicial do canvas de assinatura
+        let isDrawing = false;
+        signatureCtx.strokeStyle = 'black';
+        signatureCtx.lineWidth = 2;
+        signatureCtx.lineCap = 'round';
+       
+        function resizeCanvas() {
+            const rect = signatureCanvas.getBoundingClientRect();
+            signatureCanvas.width = rect.width;
+            signatureCanvas.height = rect.height;
+            // Limpa o canvas após redimensionar
+            signatureCtx.fillStyle = 'white';
+            signatureCtx.fillRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+        }
+
+        function getMousePos(canvas, evt) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+            };
+        }
+
+        function getTouchPos(canvas, evt) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.touches[0].clientX - rect.left,
+                y: evt.touches[0].clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            signatureCtx.beginPath();
+            let pos = e.touches ? getTouchPos(signatureCanvas, e) : getMousePos(signatureCanvas, e);
+            signatureCtx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            let pos = e.touches ? getTouchPos(signatureCanvas, e) : getMousePos(signatureCanvas, e);
+            signatureCtx.lineTo(pos.x, pos.y);
+            signatureCtx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // Event Listeners para mouse e toque
+        signatureCanvas.addEventListener('mousedown', startDrawing);
+        signatureCanvas.addEventListener('mousemove', draw);
+        signatureCanvas.addEventListener('mouseup', stopDrawing);
+        signatureCanvas.addEventListener('mouseout', stopDrawing);
+       
+        signatureCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Evita o scroll na tela
+            startDrawing(e);
+        }, { passive: false });
+        signatureCanvas.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Evita o scroll na tela
+            draw(e);
+        }, { passive: false });
+        signatureCanvas.addEventListener('touchend', stopDrawing);
+       
+        clearBtn.addEventListener('click', () => {
+            signatureCtx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+            signatureCtx.fillStyle = 'white';
+            signatureCtx.fillRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+        });
+
+        saveBtn.addEventListener('click', () => {
+            const signatureDataURL = signatureCanvas.toDataURL();
+            // Aqui você enviaria 'signatureDataURL' para o backend
+            console.log('Assinatura salva (simulado):', signatureDataURL);
+            confirmacaoAssinatura.classList.remove('hidden');
+            setTimeout(() => confirmacaoAssinatura.classList.add('hidden'), 3000);
+        });
+       
+        // Redimensiona o canvas quando a tela é carregada e redimensionada
+        window.addEventListener('load', resizeCanvas);
+        window.addEventListener('resize', resizeCanvas);
+
+        // Função para mostrar a tela correta
+        function showScreen(screen) {
+            telaCliente.classList.add('hidden');
+            telaAtendente.classList.add('hidden');
+            telaChefe.classList.add('hidden');
+            telaFornecedores.classList.add('hidden');
+            telaAssinatura.classList.add('hidden');
+            telaIaDiagnostico.classList.add('hidden');
+            screen.classList.remove('hidden');
+            if (screen === telaAssinatura) {
+                // Redimensiona o canvas quando a tela de assinatura é mostrada
+                resizeCanvas();
+            }
+        }
+
+        // Simulação de dados para o dashboard do chefe
+        const mockData = {
+            total: 250,
+            pendentes: 50,
+            finalizadas: 150,
+            andamento: 50
+        };
+
+        function updateDashboard() {
+            // Atualiza os números
+            osPendentesDisplay.textContent = mockData.pendentes;
+            osFinalizadasDisplay.textContent = mockData.finalizadas;
+            osTotalDisplay.textContent = mockData.total;
+           
+            // Atualiza o gráfico (alturas em %)
+            const total = mockData.total;
+            const pendentesPercent = (mockData.pendentes / total) * 100;
+            const finalizadasPercent = (mockData.finalizadas / total) * 100;
+            const andamentoPercent = (mockData.andamento / total) * 100;
+
+            chartBarPendentes.style.height = `${pendentesPercent}%`;
+            chartBarAndamento.style.height = `${andamentoPercent}%`;
+            chartBarFinalizadas.style.height = `${finalizadasPercent}%`;
+        }
+       
+        // Evento de clique para o botão de análise de IA
+        iaAnalisarBtn.addEventListener('click', () => {
+            // Simula a busca e a resposta da IA
+            iaResultados.classList.remove('hidden');
+            iaDiagnosticosAnteriores.innerHTML = `
+                <li class="p-2 bg-white rounded-md shadow-sm">
+                    <span class="font-semibold">Problema:</span> Tela preta ao iniciar o sistema.
+                    <span class="text-sm text-gray-500">- (OS #12345)</span>
+                </li>
+                <li class="p-2 bg-white rounded-md shadow-sm">
+                    <span class="font-semibold">Problema:</span> Falha no display ao ligar.
+                    <span class="text-sm text-gray-500">- (OS #12456)</span>
+                </li>
+            `;
+            iaSolucoesSugeridas.innerHTML = `
+                <li>Verificar a conexão do cabo flat.</li>
+                <li>Testar o aparelho com uma tela externa.</li>
+                <li>Possível troca da placa de vídeo.</li>
+            `;
+        });
+
+        // Eventos dos botões de navegação
+        btnCliente.addEventListener('click', () => showScreen(telaCliente));
+        btnAtendente.addEventListener('click', () => showScreen(telaAtendente));
+        btnChefe.addEventListener('click', () => {
+            showScreen(telaChefe);
+            updateDashboard();
+        });
+        btnFornecedores.addEventListener('click', () => showScreen(telaFornecedores));
+        btnAssinatura.addEventListener('click', () => showScreen(telaAssinatura));
+        btnIaDiagnostico.addEventListener('click', () => showScreen(telaIaDiagnostico));
+
+        // Evento de submissão do formulário do cliente
+        formCliente.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formCliente.reset();
+            confirmacaoCliente.classList.remove('hidden');
+            setTimeout(() => confirmacaoCliente.classList.add('hidden'), 3000);
+        });
+
+        // Evento de submissão do formulário de OS
+        formOS.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formOS.reset();
+            confirmacaoOS.classList.remove('hidden');
+            setTimeout(() => confirmacaoOS.classList.add('hidden'), 3000);
+        });
+       
+        // Evento de submissão do formulário de peça
+        formPeca.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formPeca.reset();
+            confirmacaoPeca.classList.remove('hidden');
+            setTimeout(() => confirmacaoPeca.classList.add('hidden'), 3000);
+        });
+
+        // Evento de submissão do formulário de fornecedor
+        formFornecedor.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formFornecedor.reset();
+            confirmacaoFornecedor.classList.remove('hidden');
+            setTimeout(() => confirmacaoFornecedor.classList.add('hidden'), 3000);
+        });
+
+        // Simulação de busca de peças
+        const mockPecas = ['Tela Samsung', 'Bateria iPhone', 'Placa de Vídeo NVIDIA'];
+        pecaBusca.addEventListener('input', (e) => {
+            const termo = e.target.value.toLowerCase();
+            const resultados = mockPecas.filter(peca => peca.toLowerCase().includes(termo));
+            listaPecas.innerHTML = '';
+            if (resultados.length > 0) {
+                resultados.forEach(peca => {
+                    const li = document.createElement('li');
+                    li.textContent = peca;
+                    listaPecas.appendChild(li);
+                });
+            } else {
+                listaPecas.innerHTML = '<li>Nenhuma peça encontrada.</li>';
+            }
+        });
+
+        // Inicia na tela do cliente
+        showScreen(telaCliente);
+    </script>
+
+</body>
+</html>
